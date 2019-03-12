@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/AftahCloudAPI/v15
+/AftahCloudAPI.Application/obj/Debug
+/AftahCloud.Domain/obj/Debug/AftahCloud.Domain.csproj.CoreCompileInputs.cache
+/AftahCloudAPI.Infrastructure/obj/Debug
+/AftahCloudAPI.Persistence/obj/Debug
+/AftahCloudAPI.Presentation/obj
+/AftahCloud.Domain/obj/Debug
