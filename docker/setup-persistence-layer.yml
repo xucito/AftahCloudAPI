@@ -1,0 +1,10 @@
+version: '3'
+services:
+  mongodb:
+    image: postgres
+    volumes:
+      - postgresdata:/data/db
+    ports:
+      - 5432:5432
+volumes:
+  postgresdata:
