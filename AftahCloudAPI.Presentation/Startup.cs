@@ -16,6 +16,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using System.Runtime.InteropServices;
 
 namespace AftahCloudAPI.Presentation
 {
@@ -24,7 +25,16 @@ namespace AftahCloudAPI.Presentation
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            SecretManager = new SecretManager(Configuration.GetValue<string>("Secret:FilePath"));
+            if(Configuration.GetValue<string>("Secret:FilePath") == null || Configuration.GetValue<string>("Secret:FilePath") == "")
+            {
+                bool isWindows = System.Runtime.InteropServices.RuntimeInformation
+                       .IsOSPlatform(OSPlatform.Windows);
+                SecretManager = new SecretManager(isWindows ? "C://ProgramData//Docker//secrets//secrets.json": "/run/secrets/secrets.json");
+            }
+            else
+            {
+                SecretManager = new SecretManager(Configuration.GetValue<string>("Secret:FilePath"));
+            }
         }
 
         public IConfiguration Configuration { get; }
@@ -34,10 +44,9 @@ namespace AftahCloudAPI.Presentation
         {
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseNpgsql("localhost;port=5432;Database=AftahDB", b =>
-                    b.MigrationsAssembly(typeof(ApplicationDbContext).GetTypeInfo().Assembly.GetName().Name));
-                }
-            );
+                options.UseNpgsql("Server=localhost;port=5432;Database=AftahDB;user id=defaultUser;password=P@ssw0rd123!", b =>
+                        b.MigrationsAssembly(typeof(ApplicationDbContext).GetTypeInfo().Assembly.GetName().Name));
+                });
 
             BootstrapIdentity(services);
 

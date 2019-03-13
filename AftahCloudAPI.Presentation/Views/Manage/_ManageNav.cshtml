@@ -1,0 +1,16 @@
+﻿@using EDPCIdentityServer.Views.Manage
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
+}
+
+<div class="list-group">
+    <a class="@ManageNavPages.IndexNavClass(ViewContext) list-group-item-action list-group-item" asp-action="Index">Profile</a>
+    <a class="@ManageNavPages.ChangePasswordNavClass(ViewContext) list-group-item-action list-group-item" asp-action="ChangePassword">Password</a>
+    @if (hasExternalLogins)
+    {
+        <a class="@ManageNavPages.ExternalLoginsNavClass(ViewContext) list-group-item-action list-group-item" asp-action="ExternalLogins">External logins</a>
+    }
+    <a class="@ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext) list-group-item-action list-group-item" asp-action="TwoFactorAuthentication">Two-factor authentication</a>
+</div>
+

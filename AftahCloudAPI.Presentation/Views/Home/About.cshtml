@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "About";
+    var _portalUrl = ViewData["PortalUrl"];
+}
+@using Microsoft.AspNetCore.Identity
+@using EDPCIdentityServer.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+<div class="whiteBackground">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <h2>Salaam @UserManager.GetUserName(User)</h2>
+        <!-- <h3>You are successfully logged in</h3> -->
+        <p>Access the <a href="@_portalUrl">Etisalat Digital e1 Cloud Portal by clicking here</a></p>
+
+    }
+    else
+    {
+        <h2>About</h2>
+        <h3></h3>
+
+        <p>To continue, please register <a href="/Account/Register">here</a></p>
+
+        <p>For login issues, or access questions, please contact bupson@etisalat.ae</p>
+
+    }
+
+</div>

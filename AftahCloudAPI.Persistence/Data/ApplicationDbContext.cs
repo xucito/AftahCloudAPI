@@ -22,11 +22,11 @@ namespace AftahCloudAPI.Persistence.Data
             : base(options)
         {
         }
-
+        /*
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseNpgsql("localhost;port=5432;Database=AftahDB");
-        }
+        }*/
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

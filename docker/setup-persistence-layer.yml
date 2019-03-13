@@ -6,5 +6,8 @@ services:
       - postgresdata:/data/db
     ports:
       - 5432:5432
+    environment:
+      - POSTGRES_USER=defaultUser
+      - POSTGRES_PASSWORD=P@ssw0rd123!
 volumes:
   postgresdata:
