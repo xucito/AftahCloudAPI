@@ -36,6 +36,7 @@ namespace AftahCloudAPI.Presentation
              .AddInMemoryIdentityResources(identityConfig.GetIdentityResources())
              .AddInMemoryApiResources(identityConfig.GetApiResources())
              .AddInMemoryClients(identityConfig.GetClients())
+             .AddTestUsers()
              .AddAspNetIdentity<ApplicationUser>();
         }
 

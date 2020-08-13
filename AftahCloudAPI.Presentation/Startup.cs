@@ -17,6 +17,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System.Runtime.InteropServices;
+using AftahCloudAPI.Presentation.Services;
 
 namespace AftahCloudAPI.Presentation
 {
@@ -48,6 +49,13 @@ namespace AftahCloudAPI.Presentation
                         b.MigrationsAssembly(typeof(ApplicationDbContext).GetTypeInfo().Assembly.GetName().Name));
                 });
 
+            var emailSettings = Configuration.GetSection("EmailSender");
+            if (emailSettings != null)
+            {
+                services.Configure<EmailSenderOptions>(emailSettings);
+            }
+            services.AddSingleton<IEmailSender, EmailSender>();
+
             BootstrapIdentity(services);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -71,7 +79,7 @@ namespace AftahCloudAPI.Presentation
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Account}/{action=Login}/{id?}");
             });
         }
     }

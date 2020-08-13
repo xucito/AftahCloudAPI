@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EDPCIdentityServer.Services
+namespace AftahCloudAPI.Presentation.Services
 {
     /*
      * dotnet user-secrets set SmtpUser auth_service_account@etisalat.ae

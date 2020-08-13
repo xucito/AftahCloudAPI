@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
-namespace EDPCIdentityServer.Views.Manage
+namespace AftahCloudAPI.Presentation.Views.Manage
 {
     public static class ManageNavPages
     {

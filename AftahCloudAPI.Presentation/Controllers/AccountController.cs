@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using AftahCloudAPI.Presentation.Services;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using AftahCloudAPI.Presentation.Models.AccountViewModels;
 using AftahCloud.Domain.Entities.ApplicationUsers;
 

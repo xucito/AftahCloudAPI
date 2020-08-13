@@ -3,7 +3,8 @@
     var _portalUrl = ViewData["PortalUrl"];
 }
 @using Microsoft.AspNetCore.Identity
-@using EDPCIdentityServer.Models
+@using AftahCloud.Domain.Entities.ApplicationUsers
+@using AftahCloudAPI.Presentation.Models.AccountViewModels
 
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
